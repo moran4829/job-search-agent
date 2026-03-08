@@ -5,57 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>סוכן חיפוש משרות – מורן פלדמן</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, sans-serif; background: #f8fafc; min-height: 100vh; padding: 20px 16px; }
-  .wrap { max-width: 820px; margin: 0 auto; }
-  .header { background: linear-gradient(135deg, #1e3a5f, #2563eb); border-radius: 16px; padding: 24px 28px; margin-bottom: 20px; color: #fff; }
-  .header h1 { font-size: 21px; font-weight: 700; margin-bottom: 4px; }
-  .header p { font-size: 13px; opacity: 0.8; margin-bottom: 12px; }
-  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-  .tag { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 3px 11px; font-size: 11px; }
-  .note { font-size: 12px; opacity: 0.7; }
-  .btn { width: 100%; padding: 16px; border-radius: 12px; border: none; background: #2563eb; color: #fff; font-size: 17px; font-weight: 700; cursor: pointer; margin-bottom: 24px; }
-  .btn:disabled { background: #94a3b8; cursor: not-allowed; }
-  .info { background: #eff6ff; border-radius: 10px; padding: 10px 16px; margin-bottom: 16px; font-size: 13px; color: #1d4ed8; }
-  .error { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; padding: 16px; color: #dc2626; margin-bottom: 16px; }
-  .results-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #1e293b; }
-  .card { background: #fff; border-radius: 14px; padding: 20px 24px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); border: 1px solid #e2e8f0; }
-  .card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
-  .card-title { font-size: 17px; font-weight: 700; color: #1e293b; }
-  .card-sub { color: #64748b; font-size: 14px; margin-top: 2px; }
-  .badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .badge { border-radius: 20px; padding: 3px 12px; font-size: 12px; font-weight: 600; }
-  .score { border-width: 2px; border-style: solid; border-radius: 20px; padding: 3px 12px; font-size: 13px; font-weight: 700; }
-  .reasons { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
-  .reason { background: #f0fdf4; color: #166534; border-radius: 8px; padding: 2px 10px; font-size: 12px; }
-  .cv-note { margin-top: 12px; background: #fffbeb; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #92400e; }
-  .actions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
-  .action-btn { border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
-  .open-btn { background: #2563eb; color: #fff; text-decoration: none; }
-  .cv-btn { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0 !important; border: none; }
-  .cl-btn { background: #f8fafc; color: #1e293b; border: 1px solid #e2e8f0 !important; border: none; }
-  .cv-panel { margin-top: 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 18px 20px; display: none; }
-  .cl-panel { margin-top: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 20px; display: none; }
-  .panel-title { font-weight: 700; font-size: 15px; color: #14532d; margin-bottom: 14px; }
-  .cl-panel .panel-title { color: #1e293b; }
-  .section-label { font-weight: 600; color: #166534; font-size: 13px; margin-bottom: 4px; margin-top: 10px; }
-  .objective { font-size: 13px; color: #1e293b; line-height: 1.6; }
-  .exp-role { font-weight: 600; font-size: 13px; color: #1e293b; margin-top: 8px; }
-  .exp-bullet { font-size: 12px; color: #374151; padding-right: 12px; line-height: 1.6; }
-  .skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-  .skill { background: #dcfce7; color: #14532d; border-radius: 8px; padding: 2px 10px; font-size: 12px; }
-  .special { background: #fff; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #065f46; font-style: italic; margin-top: 8px; }
-  .cl-text { font-size: 13px; color: #334155; line-height: 1.8; white-space: pre-wrap; }
-  .copy-btn { margin-top: 12px; background: #16a34a; color: #fff; border: none; border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; font-weight: 600; }
-  .copy-btn.blue { background: #2563eb; }
-  .empty { text-align: center; color: #94a3b8; padding: 40px 0; font-size: 15px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f8fafc; min-height: 100vh; padding: 20px 16px; }
+.wrap { max-width: 820px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #1e3a5f, #2563eb); border-radius: 16px; padding: 24px 28px; margin-bottom: 20px; color: #fff; }
+.header h1 { font-size: 21px; font-weight: 700; margin-bottom: 4px; }
+.header p { font-size: 13px; opacity: 0.8; margin-bottom: 12px; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.tag { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 3px 11px; font-size: 11px; }
+.note { font-size: 12px; opacity: 0.7; }
+.btn { width: 100%; padding: 16px; border-radius: 12px; border: none; background: #2563eb; color: #fff; font-size: 17px; font-weight: 700; cursor: pointer; margin-bottom: 24px; }
+.btn:disabled { background: #94a3b8; cursor: not-allowed; }
+.info { background: #eff6ff; border-radius: 10px; padding: 10px 16px; margin-bottom: 16px; font-size: 13px; color: #1d4ed8; display: none; }
+.error { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; padding: 16px; color: #dc2626; margin-bottom: 16px; display: none; }
+.results-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #1e293b; display: none; }
+.card { background: #fff; border-radius: 14px; padding: 20px 24px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); border: 1px solid #e2e8f0; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+.card-title { font-size: 17px; font-weight: 700; color: #1e293b; }
+.card-sub { color: #64748b; font-size: 14px; margin-top: 2px; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.badge { border-radius: 20px; padding: 3px 12px; font-size: 12px; font-weight: 600; }
+.score { border-width: 2px; border-style: solid; border-radius: 20px; padding: 3px 12px; font-size: 13px; font-weight: 700; }
+.reasons { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.reason { background: #f0fdf4; color: #166534; border-radius: 8px; padding: 2px 10px; font-size: 12px; }
+.cv-note { margin-top: 12px; background: #fffbeb; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #92400e; }
+.actions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+.action-btn { border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+.open-btn { background: #2563eb; color: #fff; text-decoration: none; display: inline-block; }
+.cv-btn { background: #f0fdf4; color: #166634; border: 1px solid #bbf7d0; }
+.cl-btn { background: #f8fafc; color: #1e293b; border: 1px solid #e2e8f0; }
+.panel { border-radius: 12px; padding: 18px 20px; margin-top: 14px; display: none; }
+.cv-panel { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.cl-panel { background: #f8fafc; border: 1px solid #e2e8f0; }
+.panel-title { font-weight: 700; font-size: 15px; margin-bottom: 14px; }
+.cv-panel .panel-title { color: #14532d; }
+.cl-panel .panel-title { color: #1e293b; }
+.sec-label { font-weight: 600; font-size: 13px; color: #166534; margin: 10px 0 4px; }
+.objective { font-size: 13px; color: #1e293b; line-height: 1.6; }
+.exp-role { font-weight: 600; font-size: 13px; color: #1e293b; margin-top: 8px; }
+.exp-bullet { font-size: 12px; color: #374151; padding-right: 12px; line-height: 1.6; }
+.skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.skill { background: #dcfce7; color: #14532d; border-radius: 8px; padding: 2px 10px; font-size: 12px; }
+.special { background: #fff; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #065f46; font-style: italic; margin-top: 8px; }
+.cl-text { font-size: 13px; color: #334155; line-height: 1.8; white-space: pre-wrap; }
+.copy-btn { margin-top: 12px; border: none; border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; font-weight: 600; color: #fff; }
+.copy-green { background: #16a34a; }
+.copy-blue { background: #2563eb; }
+.empty { text-align: center; color: #94a3b8; padding: 40px 0; font-size: 15px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="header">
     <h1>🤖 סוכן חיפוש משרות – מורן פלדמן</h1>
-    <p>Cloudflare → SerpAPI → Google Search → LinkedIn</p>
+    <p>Cloudflare Worker → SerpAPI + Claude · ללא keys בקוד ✅</p>
     <div class="tags">
       <span class="tag">🏥 רפואי</span><span class="tag">🛡️ ביטחוני</span><span class="tag">💳 פינטק</span>
       <span class="tag">🏛️ ממשלה</span><span class="tag">✈️ תעופה</span><span class="tag">🏢 Enterprise</span><span class="tag">💼 כל השוק</span>
@@ -64,39 +67,38 @@
   </div>
 
   <button class="btn" id="searchBtn" onclick="runSearch()">🚀 סרוק משרות חדשות עכשיו</button>
-  <div id="infoBox" class="info" style="display:none"></div>
-  <div id="errorBox" class="error" style="display:none"></div>
-  <div id="resultsTitle" class="results-title" style="display:none"></div>
+  <div id="infoBox" class="info"></div>
+  <div id="errorBox" class="error"></div>
+  <div id="resultsTitle" class="results-title"></div>
   <div id="results"></div>
   <div id="empty" class="empty">לחצי על הכפתור למעלה כדי להתחיל 👆</div>
 </div>
 
 <script>
-const PROXY_URL = "https://serp-proxy.moranpe.workers.dev";
+const PROXY = "https://serp-proxy.moranpe.workers.dev";
 
-const ALREADY_APPLIED = [
+const APPLIED = [
   "palo alto","בנק זירו","samplead","hello heart","שב\"כ","bmc","hi bob","wix","via","carbyn",
-  "רפאל","okta","emphaty","hyro","opmed","gini","guidd","utila","lumen","liacom",
-  "eleos","helfy","rybtech","sqlink","tastewise","monday","base44","microsoft","portless",
-  "flare","arpeely","לקסילון","shapes","apomedical","cognyte","yad2","bright data","plain id",
-  "nice","etoro","razorlabs","autix10","earnix","waze","workiz","envue","eitan medical",
-  "canopy","checkpoint","melio","my team","אלביט"
+  "רפאל","okta","emphaty","hyro","opmed","gini","guidd","utila","lumen","liacom","eleos",
+  "helfy","rybtech","sqlink","tastewise","monday","base44","microsoft","portless","flare",
+  "arpeely","לקסילון","shapes","apomedical","cognyte","yad2","bright data","plain id","nice",
+  "etoro","razorlabs","autix10","earnix","waze","workiz","envue","eitan medical","canopy",
+  "checkpoint","melio","my team","אלביט","honeybook","artlist","beamup","easysend"
 ];
 
-const CV_TEXT = `Moran Feldman | Product Leader | CX Strategist | B.Sc Industrial Engineer | Security Clearance Level 2
+const CV = `Moran Feldman | Product Leader | CX Strategist | B.Sc Industrial Engineer | Security Clearance Level 2
 EXPERIENCE:
 - Head of CX, NGSOFT (May 2024–present): Leading multidisciplinary product experience group for enterprise and government clients.
 - VP Products / Head of CX, Codeoasis (2018–2024): Built Product & Experience division from scratch. Fintech, insurance, commerce.
-- PM Head of Project Management, Codeoasis (2015–2018)
-- Project Manager, Codeoasis (2012–2015)
+- PM Head of Project Management, Codeoasis (2015–2018). Project Manager, Codeoasis (2012–2015).
 - NGSoft/Mantis, Ewave, Aman Consulting (2002–2012): Defense, commerce, finance.
 EDUCATION: B.Sc Industrial Engineering BGU. CX Management Reichman 2023.
-SKILLS: Figma, Design Systems, OOUX, Product Strategy, UX/CX Strategy, KPI Definition, Stakeholder Management, Agile, AI-Driven Product Design, Cursor, Usability Testing.
+SKILLS: Figma, Design Systems, OOUX, Product Strategy, UX/CX Strategy, KPI Definition, Stakeholder Management, Agile, AI-Driven Product Design, Usability Testing.
 MILITARY: F-16 Simulator Instructor, IAF. SECURITY CLEARANCE: Level 2. LANGUAGES: Hebrew, English.`;
 
 const QUERIES = [
-  "site:linkedin.com/jobs/view UX Design Manager Israel",
   "site:linkedin.com/jobs/view Head of Design Israel",
+  "site:linkedin.com/jobs/view UX Design Manager Israel",
   "site:linkedin.com/jobs/view Design Manager Israel",
   "site:linkedin.com/jobs/view Head of UX Israel",
   "site:linkedin.com/jobs/view UX Lead Israel",
@@ -108,23 +110,25 @@ const QUERIES = [
 ];
 
 const SYSTEM = `You are a job matching assistant for Moran Feldman.
-CV: ${CV_TEXT}
-Already applied (skip): ${ALREADY_APPLIED.join(", ")}
-Select only HEAD OF / MANAGER / LEAD / VP / DIRECTOR level. NOT individual contributor. NOT cybersecurity.
-Return ONLY a JSON array:
-[{"title":"...","company":"...","location":"...","industry":"Medical/Defense/Fintech/GovTech/Enterprise/Aviation/Other","url":"...","match_score":85,"match_reasons":["...","..."],"tailored_cv_notes":"...","cover_letter":"Full 3-paragraph letter signed Moran Feldman","tailored_cv":{"objective":"...","top_experiences":[{"role":"Head of CX","company":"NGSOFT","highlights":["...","...","..."]},{"role":"VP Products / Head of CX","company":"Codeoasis","highlights":["...","...","..."]},{"role":"Earlier Experience","company":"NGSoft / Ewave / Aman","highlights":["...","..."]}],"top_skills":["...","...","...","...","...","..."],"special_note":"..."}}]`;
+CV: ${CV}
+Already applied - SKIP THESE: ${APPLIED.join(", ")}
+Select ONLY HEAD OF / MANAGER / LEAD / VP / DIRECTOR level roles. NOT individual contributor. NOT cybersecurity.
+Return ONLY a valid JSON array (no markdown, no explanation):
+[{"title":"...","company":"...","location":"...","industry":"Medical/Defense/Fintech/GovTech/Enterprise/Aviation/Other","url":"...","match_score":85,"match_reasons":["...","...","..."],"tailored_cv_notes":"2-3 sentences","cover_letter":"Full 3-paragraph personalized letter in Hebrew or English, signed Moran Feldman","tailored_cv":{"objective":"...","top_experiences":[{"role":"Head of CX","company":"NGSOFT","highlights":["...","...","..."]},{"role":"VP Products / Head of CX","company":"Codeoasis","highlights":["...","...","..."]},{"role":"Earlier Experience","company":"NGSoft / Ewave / Aman","highlights":["...","..."]}],"top_skills":["...","...","...","...","...","..."],"special_note":"..."}}]`;
 
-const isApplied = t => ALREADY_APPLIED.some(a => t?.toLowerCase().includes(a.toLowerCase()));
-const scoreColor = s => s >= 80 ? "#22c55e" : s >= 60 ? "#f59e0b" : "#ef4444";
-const indStyle = i => ({Medical:{bg:"#dcfce7",c:"#16a34a",e:"🏥"},Defense:{bg:"#dbeafe",c:"#1d4ed8",e:"🛡️"},Fintech:{bg:"#fef9c3",c:"#854d0e",e:"💳"},GovTech:{bg:"#e0e7ff",c:"#4338ca",e:"🏛️"},Aviation:{bg:"#f0fdf4",c:"#065f46",e:"✈️"},Enterprise:{bg:"#f3e8ff",c:"#7e22ce",e:"🏢"}}[i] || {bg:"#f1f5f9",c:"#475569",e:"💼"});
+const isApplied = t => APPLIED.some(a => (t||"").toLowerCase().includes(a.toLowerCase()));
+const sc = s => s >= 80 ? "#22c55e" : s >= 60 ? "#f59e0b" : "#ef4444";
+const ind = i => ({Medical:{bg:"#dcfce7",c:"#16a34a",e:"🏥"},Defense:{bg:"#dbeafe",c:"#1d4ed8",e:"🛡️"},Fintech:{bg:"#fef9c3",c:"#854d0e",e:"💳"},GovTech:{bg:"#e0e7ff",c:"#4338ca",e:"🏛️"},Aviation:{bg:"#f0fdf4",c:"#065f46",e:"✈️"},Enterprise:{bg:"#f3e8ff",c:"#7e22ce",e:"🏢"}}[i]||{bg:"#f1f5f9",c:"#475569",e:"💼"});
 
 function setProgress(msg) {
-  document.getElementById("infoBox").style.display = msg ? "block" : "none";
-  document.getElementById("infoBox").textContent = msg;
+  const el = document.getElementById("infoBox");
+  el.style.display = msg ? "block" : "none";
+  el.textContent = msg;
 }
 function setError(msg) {
-  document.getElementById("errorBox").style.display = msg ? "block" : "none";
-  document.getElementById("errorBox").textContent = msg ? "⚠️ " + msg : "";
+  const el = document.getElementById("errorBox");
+  el.style.display = msg ? "block" : "none";
+  el.textContent = msg ? "⚠️ " + msg : "";
 }
 function copy(text, btn) {
   navigator.clipboard.writeText(text);
@@ -132,19 +136,31 @@ function copy(text, btn) {
   btn.textContent = "✅ הועתק!";
   setTimeout(() => btn.textContent = orig, 2000);
 }
-function buildCvText(cv, title, company) {
+function togglePanel(id, btn, labelOpen, labelClose) {
+  const el = document.getElementById(id);
+  const open = el.style.display === "block";
+  el.style.display = open ? "none" : "block";
+  btn.textContent = open ? labelOpen : labelClose;
+}
+function buildCvText(cv) {
   if (!cv) return "";
   let t = `MORAN FELDMAN\n(+972)52-2506426 | moranpe@gmail.com\n\nOBJECTIVE\n${cv.objective}\n\nEXPERIENCE\n`;
-  cv.top_experiences?.forEach(e => {
-    t += `\n${e.role} | ${e.company}\n`;
-    e.highlights?.forEach(h => t += `• ${h}\n`);
-  });
-  t += `\nKEY SKILLS\n${cv.top_skills?.join(" · ")}\n\nWHY THIS ROLE\n${cv.special_note}\n`;
+  (cv.top_experiences||[]).forEach(e => { t += `\n${e.role} | ${e.company}\n`; (e.highlights||[]).forEach(h => t += `• ${h}\n`); });
+  t += `\nKEY SKILLS\n${(cv.top_skills||[]).join(" · ")}\n\nWHY THIS ROLE\n${cv.special_note||""}\n`;
   return t;
 }
 
+async function callProxy(body) {
+  const res = await fetch(PROXY, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) throw new Error(`שגיאה: ${res.status}`);
+  return res.json();
+}
+
 async function runSearch() {
-  if (!ANTHROPIC_KEY) { setError("הכניסי Anthropic API Key בקובץ index.html"); return; }
   document.getElementById("searchBtn").disabled = true;
   document.getElementById("results").innerHTML = "";
   document.getElementById("empty").style.display = "none";
@@ -153,14 +169,11 @@ async function runSearch() {
 
   const allResults = [];
   for (const q of QUERIES) {
-    setProgress(`🔍 מחפש: "${q.replace("site:linkedin.com/jobs/view ","").replace("site:drushim.co.il ","").replace("site:alljobs.co.il ","")}"...`);
+    const label = q.replace(/site:\S+\s/,"");
+    setProgress(`🔍 מחפש: "${label}"...`);
     try {
-      const res = await fetch(PROXY_URL, {
-        method: "POST", headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({action: "search", query: q})
-      });
-      const data = await res.json();
-      (data.organic_results || []).forEach(r => allResults.push(r));
+      const data = await callProxy({action:"search", query:q});
+      (data.organic_results||[]).forEach(r => allResults.push(r));
     } catch(e) { console.warn("נכשל:", q, e); }
   }
 
@@ -168,7 +181,7 @@ async function runSearch() {
   const unique = allResults.filter(r => { if(seen.has(r.link)) return false; seen.add(r.link); return true; });
   const fresh = unique.filter(r => !isApplied(r.title + " " + r.snippet));
 
-  if (fresh.length === 0) {
+  if (!fresh.length) {
     setProgress("");
     setError("לא נמצאו תוצאות חדשות. נסי שוב.");
     document.getElementById("searchBtn").disabled = false;
@@ -180,36 +193,40 @@ async function runSearch() {
   const jobsList = fresh.slice(0,25).map(r => ({title:r.title, snippet:r.snippet, url:r.link}));
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {"Content-Type":"application/json","x-api-key": ANTHROPIC_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
-      body: JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:8000,system:SYSTEM,
-        messages:[{role:"user",content:`Extract management job postings and prepare tailored CVs:\n\n${JSON.stringify(jobsList,null,2)}`}]})
+    const data = await callProxy({
+      action: "claude",
+      system: SYSTEM,
+      messages: [{role:"user", content:`Extract management job postings and prepare tailored CVs and cover letters:\n\n${JSON.stringify(jobsList,null,2)}`}]
     });
-    const data = await res.json();
-    const text = data.content?.filter(b=>b.type==="text").map(b=>b.text).join("\n") || "";
+
+    const text = (data.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("\n");
     const match = text.match(/\[[\s\S]*\]/);
-    if (!match) throw new Error("לא נמצאו משרות ניהול.");
+    if (!match) throw new Error("לא נמצאו משרות ניהול מתאימות.");
     const jobs = JSON.parse(match[0]);
     if (!jobs.length) throw new Error("לא נמצאו משרות ניהול מתאימות.");
     renderJobs(jobs);
+    setProgress("");
   } catch(e) {
     setError(e.message);
+    setProgress("");
   }
 
-  setProgress("");
   document.getElementById("searchBtn").disabled = false;
 }
 
 function renderJobs(jobs) {
-  document.getElementById("resultsTitle").style.display = "block";
-  document.getElementById("resultsTitle").textContent = `✅ ${jobs.length} משרות ניהול מתאימות`;
+  const rt = document.getElementById("resultsTitle");
+  rt.style.display = "block";
+  rt.textContent = `✅ ${jobs.length} משרות ניהול מתאימות`;
   const container = document.getElementById("results");
   container.innerHTML = "";
 
   jobs.forEach((job, i) => {
-    const ind = indStyle(job.industry);
-    const sc = scoreColor(job.match_score);
+    const style = ind(job.industry);
+    const scoreClr = sc(job.match_score);
+    const cvId = `cv-${i}`, clId = `cl-${i}`;
+    const cvText = buildCvText(job.tailored_cv);
+
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
@@ -219,47 +236,45 @@ function renderJobs(jobs) {
           <div class="card-sub">${job.company} · ${job.location}</div>
         </div>
         <div class="badges">
-          <span class="badge" style="background:${ind.bg};color:${ind.c}">${ind.e} ${job.industry}</span>
-          <span class="score" style="border-color:${sc};color:${sc}">${job.match_score}% התאמה</span>
+          <span class="badge" style="background:${style.bg};color:${style.c}">${style.e} ${job.industry}</span>
+          <span class="score" style="border-color:${scoreClr};color:${scoreClr}">${job.match_score}% התאמה</span>
         </div>
       </div>
       <div class="reasons">${(job.match_reasons||[]).map(r=>`<span class="reason">✓ ${r}</span>`).join("")}</div>
       ${job.tailored_cv_notes ? `<div class="cv-note"><strong>💡 מה להדגיש:</strong> ${job.tailored_cv_notes}</div>` : ""}
       <div class="actions">
         ${job.url ? `<a href="${job.url}" target="_blank" class="action-btn open-btn">🔗 פתח משרה</a>` : ""}
-        <button class="action-btn cv-btn" onclick="togglePanel('cv-${i}', this)">📄 קו״ח מותאמים</button>
-        <button class="action-btn cl-btn" onclick="togglePanel('cl-${i}', this)">✉️ Cover Letter</button>
+        <button class="action-btn cv-btn" id="cvbtn-${i}" onclick="togglePanel('${cvId}', document.getElementById('cvbtn-${i}'), '📄 קו״ח מותאמים', '▲ הסתר קו״ח')">📄 קו״ח מותאמים</button>
+        <button class="action-btn cl-btn" id="clbtn-${i}" onclick="togglePanel('${clId}', document.getElementById('clbtn-${i}'), '✉️ Cover Letter', '▲ הסתר מכתב')">✉️ Cover Letter</button>
       </div>
-      <div id="cv-${i}" class="cv-panel">
+
+      <div id="${cvId}" class="panel cv-panel">
         <div class="panel-title">📄 קו״ח מותאמים – ${job.title} @ ${job.company}</div>
-        <div class="section-label">🎯 OBJECTIVE</div>
-        <div class="objective">${job.tailored_cv?.objective || ""}</div>
-        <div class="section-label">💼 EXPERIENCE</div>
+        <div class="sec-label">🎯 OBJECTIVE</div>
+        <div class="objective">${job.tailored_cv?.objective||""}</div>
+        <div class="sec-label">💼 EXPERIENCE</div>
         ${(job.tailored_cv?.top_experiences||[]).map(e=>`
           <div class="exp-role">${e.role} | ${e.company}</div>
           ${(e.highlights||[]).map(h=>`<div class="exp-bullet">• ${h}</div>`).join("")}
         `).join("")}
-        <div class="section-label">🔧 KEY SKILLS</div>
+        <div class="sec-label">🔧 KEY SKILLS</div>
         <div class="skills">${(job.tailored_cv?.top_skills||[]).map(s=>`<span class="skill">${s}</span>`).join("")}</div>
         ${job.tailored_cv?.special_note ? `<div class="special">⭐ ${job.tailored_cv.special_note}</div>` : ""}
-        <button class="copy-btn" onclick="copy(buildCvText(${JSON.stringify(job.tailored_cv).replace(/</g,'&lt;')}, '${job.title}', '${job.company}'), this)">📋 העתק קו״ח</button>
+        <button class="copy-btn copy-green" onclick="copy(window._cvTexts[${i}], this)">📋 העתק קו״ח</button>
       </div>
-      <div id="cl-${i}" class="cl-panel">
+
+      <div id="${clId}" class="panel cl-panel">
         <div class="panel-title">✉️ Cover Letter – ${job.company}</div>
-        <div class="cl-text">${job.cover_letter || ""}</div>
-        <button class="copy-btn blue" onclick="copy(this.previousElementSibling.textContent, this)">📋 העתק מכתב</button>
+        <div class="cl-text" id="cl-text-${i}">${job.cover_letter||""}</div>
+        <button class="copy-btn copy-blue" onclick="copy(document.getElementById('cl-text-${i}').textContent, this)">📋 העתק מכתב</button>
       </div>
     `;
     container.appendChild(div);
-  });
-}
 
-function togglePanel(id, btn) {
-  const el = document.getElementById(id);
-  const isOpen = el.style.display === "block";
-  el.style.display = isOpen ? "none" : "block";
-  const isCv = id.startsWith("cv-");
-  btn.textContent = isOpen ? (isCv ? "📄 קו״ח מותאמים" : "✉️ Cover Letter") : (isCv ? "▲ הסתר קו״ח" : "▲ הסתר מכתב");
+    // Store CV text
+    window._cvTexts = window._cvTexts || {};
+    window._cvTexts[i] = cvText;
+  });
 }
 </script>
 </body>
